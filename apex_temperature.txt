@@ -1,0 +1,39 @@
+public class Temperature {
+    public Decimal temperature { get; set; }
+    public String scale { get; set; }
+    public String result { get; set; }
+
+    public void convert() {
+        if (temperature == null || String.isBlank(scale)) {
+            result = 'Error: Temperature or scale is missing.';
+            return;
+        }
+
+        String normalizedScale = scale.toUpperCase();
+
+        if (normalizedScale == 'C') {
+            Decimal fahrenheit = (temperature * 1.8) + 32;
+            result = temperature.setScale(2) + ' °C = ' + fahrenheit.setScale(2) + ' °F';
+        } 
+        else if (normalizedScale == 'F') {
+            Decimal celsius = (temperature - 32) / 1.8;
+            result = temperature.setScale(2) + ' °F = ' + celsius.setScale(2) + ' °C';
+        } 
+        else {
+            result = 'Error: Invalid scale. Use "C" for Celsius or "F" for Fahrenheit.';
+        }
+    }
+}
+
+
+
+
+
+
+input:
+
+Temperature t = new Temperature();
+t.temperature = 100;
+t.scale = 'C';
+t.convert();
+System.debug(t.result);  // Output: 100.00 °C = 212.00 °F

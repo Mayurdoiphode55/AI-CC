@@ -1,0 +1,45 @@
+public class CurrencyConvertor {
+    
+    private static final Map<String, Map<String, Double>> conversionRates = new Map<String, Map<String, Double>>{
+        'INR' => new Map<String, Double>{
+            'USD' => 0.012,
+            'Pound' => 0.0096
+        },
+        'USD' => new Map<String, Double>{
+            'INR' => 83.38,
+            'Pound' => 0.80
+        },
+        'Pound' => new Map<String, Double>{
+            'INR' => 104.63,
+            'USD' => 1.25
+        }
+    };
+
+    public void convertCurrency(String fromCurrency, String toCurrency, Double amount) {
+        if (fromCurrency == null || toCurrency == null || amount == null || amount < 0) {
+            System.debug('Invalid input. Please check your values.');
+            return;
+        }
+
+        if (fromCurrency == toCurrency) {
+            System.debug('The currencies are the same: ' + fromCurrency);
+            return;
+        }
+
+        if (conversionRates.containsKey(fromCurrency) && conversionRates.get(fromCurrency).containsKey(toCurrency)) {
+            Double rate = conversionRates.get(fromCurrency).get(toCurrency);
+            Double convertedAmount = amount * rate;
+            System.debug(amount + ' ' + fromCurrency + ' = ' + convertedAmount + ' ' + toCurrency);
+        } else {
+            System.debug('Conversion rate not available for ' + fromCurrency + ' to ' + toCurrency);
+        }
+    }
+}
+
+
+input:
+
+CurrencyConvertor cc = new CurrencyConvertor();
+cc.convertCurrency('INR', 'USD', 1000);
+cc.convertCurrency('USD', 'INR', 50);
+cc.convertCurrency('USD', 'Pound', 25);

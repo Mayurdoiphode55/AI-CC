@@ -1,0 +1,48 @@
+public class InterestCalculator
+{
+    public Decimal principal { get; set; }
+    public Decimal rate { get; set; }
+    public Decimal duration { get; set; } // Renamed from 'time'
+    public Integer n { get; set; }
+    public Decimal compoundInterest { get; set; }
+    public Decimal amount { get; set; }
+
+    public void calculate() 
+    {
+        if(principal > 0 && rate > 0 && duration > 0 && n > 0) {
+            Double P = (Double) principal;
+            Double r = (Double) (rate / 100);
+            Double t = (Double) duration;
+            Double nt = n * t;
+            Double baseVal = 1 + (r / n);
+            Double A = P * Math.pow(baseVal, nt);
+            amount = (Decimal) A;
+            compoundInterest = amount - principal;
+        } else {
+            amount = 0;
+            compoundInterest = 0;
+        }
+    }
+}    
+
+
+
+
+input:
+
+
+// Create an instance of InterestCalculator
+InterestCalculator ic = new InterestCalculator();
+
+// Set input values
+ic.principal = 10000;   // Principal amount
+ic.rate = 5;            // Annual interest rate in percent
+ic.duration = 3;        // Duration in years
+ic.n = 4;               // Compounding frequency (e.g., 4 for quarterly)
+
+// Perform the calculation
+ic.calculate();
+
+// Output the results to debug log
+System.debug('Total Amount: ' + ic.amount);
+System.debug('Compound Interest: ' + ic.compoundInterest);

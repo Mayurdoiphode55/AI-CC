@@ -1,0 +1,55 @@
+public class GeometryArea {
+    public void calculateCircleArea(Decimal radius) {
+        if (radius == null || radius < 0) {
+            System.debug('Error: Radius cannot be null or negative.');
+            return;
+        }
+        Decimal area = Math.PI * radius * radius;
+        System.debug('Area of Circle: ' + area);
+    }
+
+    public void calculateRectangleArea(Decimal length, Decimal width) {
+        if (length == null || width == null || length < 0 || width < 0) {
+            System.debug('Error: Length and width must be non-negative.');
+            return;
+        }
+        Decimal area = length * width;
+        System.debug('Area of Rectangle: ' + area);
+    }
+
+    public void calculateTriangleArea(Decimal base, Decimal height) {
+        if (base == null || height == null || base < 0 || height < 0) {
+            System.debug('Error: Base and height must be non-negative.');
+            return;
+        }
+        Decimal area = 0.5 * base * height;
+        System.debug('Area of Triangle: ' + area);
+    }
+
+    public void calculateSquareArea(Decimal side) {
+        if (side == null || side < 0) {
+            System.debug('Error: Side must be non-negative.');
+            return;
+        }
+        Decimal area = side * side;
+        System.debug('Area of Square: ' + area);
+    }
+}
+
+
+input:
+
+// Create an instance of GeometryArea
+GeometryArea geometry = new GeometryArea();
+
+// Calculate the area of a circle with radius 5 (Decimal)
+geometry.calculateCircleArea(5);
+
+// Calculate the area of a rectangle with length 4 and width 6 (Decimals)
+geometry.calculateRectangleArea(4, 6);
+
+// Calculate the area of a triangle with base 3 and height 7 (Decimals)
+geometry.calculateTriangleArea(3, 7);
+
+// Calculate the area of a square with side 4 (Decimal)
+geometry.calculateSquareArea(4);

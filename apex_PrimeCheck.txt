@@ -1,0 +1,27 @@
+public class PrimeCheck {
+    // Static method to check for prime
+    public static Boolean isPrime(Integer num) {
+        if (num <= 1) {
+            return false;
+        }
+        for (Integer i = 2; i <= Math.sqrt(num); i++) {
+            if (Math.mod(num, i) == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
+
+input:
+
+Integer inputNum = 29; // Replace with any number you want to test
+
+Boolean result = PrimeCheck.isPrime(inputNum);
+
+if (result) {
+    System.debug(inputNum + ' is a Prime Number.');
+} else {
+    System.debug(inputNum + ' is NOT a Prime Number.');
+}

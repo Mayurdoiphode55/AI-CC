@@ -1,0 +1,19 @@
+public class ArrayAddition {
+    public void sumArray(List<Integer> arr) {
+        Integer sum = 0;
+        
+        for (Integer i = 0; i < arr.size(); i++) {
+            sum += arr[i];
+        }
+        
+        System.debug('Sum of all elements: ' + sum);
+    }
+}
+
+
+input:
+
+
+ArrayAddition sumObj = new ArrayAddition();
+List<Integer> arr = new List<Integer>{1, 2, 3, 4, 5};
+sumObj.sumArray(arr);

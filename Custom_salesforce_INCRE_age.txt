@@ -1,0 +1,19 @@
+Custom salesforce
+
+
+1) code for increment:
+
+IF(
+    AND(Paper_Publication_c, Consultancy_c),
+    TRUE,
+    FALSE
+)
+
+
+
+2) code for age and validity
+
+FLOOR((TODAY() - DOB__c) / 365.25)
+
+
+Age__c > 18

@@ -1,0 +1,107 @@
+public class ScientificCalculator {
+    public Double firstnumber { get; set; }
+    public Double secondnumber { get; set; }
+    public Double result { get; set; }
+    public String operationName { get; set; }
+    public List<String> history { get; set; }
+
+    public ScientificCalculator() {
+        history = new List<String>();
+    }
+
+    private void log(String opName, String message) {
+        operationName = opName;
+        if (result != null)
+            history.add(message + ' = ' + result);
+        else
+            history.add(message + ' = Invalid');
+    }
+
+    public void Addition() {
+        result = firstnumber + secondnumber;
+        log('Addition', 'Addition of ' + firstnumber + ' and ' + secondnumber);
+    }
+
+    public void Subtraction() {
+        result = firstnumber - secondnumber;
+        log('Subtraction', 'Subtraction of ' + firstnumber + ' and ' + secondnumber);
+    }
+
+    public void Multiplication() {
+        result = firstnumber * secondnumber;
+        log('Multiplication', 'Multiplication of ' + firstnumber + ' and ' + secondnumber);
+    }
+
+    public void Division() {
+        result = (secondnumber != 0) ? firstnumber / secondnumber : null;
+        log('Division', 'Division of ' + firstnumber + ' by ' + secondnumber);
+    }
+
+    public void Modulus() {
+        result = Math.mod(firstnumber.intValue(), secondnumber.intValue());
+        log('Modulus', 'Modulus of ' + firstnumber + ' % ' + secondnumber);
+    }
+
+    public void Power() {
+        result = Math.pow(firstnumber, secondnumber);
+        log('Power', firstnumber + ' ^ ' + secondnumber);
+    }
+
+    public void SquareRoot1() {
+        result = Math.sqrt(firstnumber);
+        log('Square Root', 'Square root of ' + firstnumber);
+    }
+
+    public void Sine1() {
+        result = Math.sin(firstnumber * Math.PI / 180);
+        log('Sine', 'Sine of ' + firstnumber + '°');
+    }
+
+    // Add more functions as needed...
+    public void reset() {
+        firstnumber = null;
+        secondnumber = null;
+        result = null;
+        operationName = null;
+        history.clear();
+    }
+}
+
+
+
+input:
+
+// Create an instance of ScientificCalculator
+ScientificCalculator calc = new ScientificCalculator();
+
+// Set values for firstnumber and secondnumber
+calc.firstnumber = 10;
+calc.secondnumber = 5;
+
+// Perform calculations
+calc.Addition();
+System.debug('Addition result: ' + calc.result);
+
+calc.Subtraction();
+System.debug('Subtraction result: ' + calc.result);
+
+calc.Multiplication();
+System.debug('Multiplication result: ' + calc.result);
+
+calc.Division();
+System.debug('Division result: ' + calc.result);
+
+calc.Modulus();
+System.debug('Modulus result: ' + calc.result);
+
+calc.Power();
+System.debug('Power result: ' + calc.result);
+
+calc.SquareRoot1();
+System.debug('Square Root result: ' + calc.result);
+
+calc.Sine1();
+System.debug('Sine result: ' + calc.result);
+
+// Print the history of operations
+System.debug('History: ' + calc.history);

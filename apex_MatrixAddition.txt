@@ -1,0 +1,38 @@
+public class MatrixAddition {
+    public void addMatrices(List<List<Integer>> mat1, List<List<Integer>> mat2) {
+        // Check if matrices have the same size
+        if (mat1.size() != mat2.size() || mat1[0].size() != mat2[0].size()) {
+            System.debug('Matrices must be of the same size');
+            return;
+        }
+
+        List<List<Integer>> result = new List<List<Integer>>();
+
+        // Perform addition of corresponding elements
+        for (Integer i = 0; i < mat1.size(); i++) {
+            List<Integer> row = new List<Integer>();
+            for (Integer j = 0; j < mat1[i].size(); j++) {
+                row.add(mat1[i][j] + mat2[i][j]);
+            }
+            result.add(row);
+        }
+
+        // Output the resulting matrix
+        System.debug('Resulting Matrix: ' + result);
+    }
+}
+
+
+input:
+
+
+MatrixAddition matrixAdd = new MatrixAddition();
+List<List<Integer>> mat1 = new List<List<Integer>>{ 
+    new List<Integer>{1, 2}, 
+    new List<Integer>{3, 4}
+};
+List<List<Integer>> mat2 = new List<List<Integer>>{ 
+    new List<Integer>{5, 6}, 
+    new List<Integer>{7, 8}
+};
+matrixAdd.addMatrices(mat1, mat2);
